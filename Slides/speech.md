@@ -1,34 +1,3 @@
----
-marp: true
-theme: gaia
-_class: lead
-paginate: false
-backgroundColor: #fff
-backgroundImage: url('https://marp.app/assets/hero-background.svg')
----
-# Honest Causal Tree
-![bg left:40% 80%](https://matteocourthoud.github.io/post/causal_trees/featured.png)
-
-**Presenter:** FU Zixuan  & SONG Shuo
-**Date:** 2025-07-24
-
----
-## Preliminaries
-- Object: $\tau(x)$. 
-- Goal: 
-  - How **large** is the effect $\tau$ for a specific $x$?
-  - How **different** is the effect across $x$?
-- Use: 
-  - Improvement on **treatment design** itself.
-  - Improvement of **assigment** of treatment.
-
----
-## On a side note
-
-- Causal Trees: focuses on the heterogeneity of treatment effects. How different is subgroup $l_1$ from subgroup $l_2$? Which group is benefiting the most? 
-  
-- Causal Forests: focuses on the precision. personalized treatment effect for each individual $x_i$. Can be used as input into estimation of lower dimentsioal objects, such as to estimate optimal policy.
----
 ##  Trees: an overview of regression trees
 
 > The best time to plant a tree was 20 years ago. The second best time is now.
@@ -159,32 +128,3 @@ $$\widehat{\text{EMSE}}_{\mu}(S^{\text{tr}}, N^{\text{est}}, \Pi)
 $$- \left( \frac{1}{N_{\text{tr}}} + \frac{1}{N_{\text{est}}} \right)
 \cdot \sum_{\ell \in \Pi} S_{\text{tr}}^2\left(\ell(x; \Pi)\right)
 $$
-
-
----
-# Other methods
-
-1. Single trees (S-learner): does not split on treatment...
-2. Two trees (T-learner): split on different features therefore can not compare...
-3. Transfrom the LHS variable from outcome into treatment effect
-
-
-4. Other splitting criteria: 
-   1. split on the outcome
-   2. split based on some $T$ statistics.
-
----
-
-# Related literature
-
-
----
-
-
-
-<div align="center">
-
-# Thanks!  
-
-![bg left:40% 80%](https://matteocourthoud.github.io/post/causal_trees/featured.png)
-</div>
