@@ -128,3 +128,8 @@ $$\widehat{\text{EMSE}}_{\mu}(S^{\text{tr}}, N^{\text{est}}, \Pi)
 $$- \left( \frac{1}{N_{\text{tr}}} + \frac{1}{N_{\text{est}}} \right)
 \cdot \sum_{\ell \in \Pi} S_{\text{tr}}^2\left(\ell(x; \Pi)\right)
 $$
+
+
+
+
+

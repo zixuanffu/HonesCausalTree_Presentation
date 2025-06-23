@@ -160,24 +160,33 @@ $$- \left( \frac{1}{N_{\text{tr}}} + \frac{1}{N_{\text{est}}} \right)
 \cdot \sum_{\ell \in \Pi} S_{\text{tr}}^2\left(\ell(x; \Pi)\right)
 $$
 
+---
+# Contribution
+1. Tree splitting **criterion** for treatment effect estimation.
+2. Honest tree growing and estimation thus **valid inference** procedure.
 
 ---
 # Other methods
 
-1. Single trees (S-learner): does not split on treatment...
-2. Two trees (T-learner): split on different features therefore can not compare...
+1. Single trees (S-learner, e.g. Imai and Ratkovic (25)): does not split on treatment...
+2. Two trees (T-learner, e.g. Foster et al. (24)): split on different features therefore can not compare...
 3. Transfrom the LHS variable from outcome into treatment effect
+$$Y_i^* = Y_i/p_i *W_i - Y_i/(1-p_i) * (1-W_i) \quad E(Y_i^*|X_i=x) = \tau(x)$$ 
+   
+---
 
 
 4. Other splitting criteria: 
-   1. split on the outcome
-   2. split based on some $T$ statistics.
+   1) split on the outcome, 
+   2) split based on some $T$ statistics.
 
 ---
 
-# Related literature
+# Subsequent work
 
-
+1. Inference.
+2. Causal Forest
+3. Generalized Forest: generalized splitting rule (the gradient of the estimating moment condition).
 ---
 
 
