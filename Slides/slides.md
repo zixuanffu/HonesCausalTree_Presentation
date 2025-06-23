@@ -13,15 +13,27 @@ backgroundImage: url('https://marp.app/assets/hero-background.svg')
 **Date:** 2025-07-24
 
 ---
-## Preliminaries
-- Object: $\tau(x)$. 
-- Goal: 
+## Motivation
+- Why study heterogeneous treatment effects?
+- Research question: 
+  - Estimate heterogeneity by covariates or features.
+  - Conduct inference about the magnitude of the differences in treatment effects across subsets of the population.
+- Athey and Imbens (2016): a data-driven approach to partition the data.
+
+---
+## Contribution:
+  - Provide valid CIs w/o restrictions on the number of covariates
+or the complexity of the DGP.
+  - Discover subpopulations with lower-than-average or higher-than-average treatment effects. 
+
+---
+## Estimand
+- Object: CATE, $\tau(x)\equiv \mathbb{E}[Y_i(1)-Y_i(0)|X_i=x]$.
   - How **large** is the effect $\tau$ for a specific $x$?
   - How **different** is the effect across $x$?
-- Use: 
+- After having the estimates: 
   - Improvement on **treatment design** itself.
   - Improvement of **assigment** of treatment.
-
 ---
 ## On a side note
 
@@ -161,12 +173,31 @@ $$- \left( \frac{1}{N_{\text{tr}}} + \frac{1}{N_{\text{est}}} \right)
 $$
 
 ---
-# Contribution
+## Taking stock
 1. Tree splitting **criterion** for treatment effect estimation.
 2. Honest tree growing and estimation thus **valid inference** procedure.
 
 ---
-# Other methods
+## Implementation
+```r
+honestTree <- honest.causalTree(y ~ x1 + x2 + x3 + x4,
+    data = train_data,
+    treatment = train_data$treatment,
+    est_data = est_data,
+    est_treatment = est_data$treatment,
+    split.Rule = "CT", split.Honest = T, HonestSampleSize = nrow(est_data),
+    split.Bucket = T, cv.option = "CT",
+    cv.Honest = T
+)
+opcp <- honestTree$cptable[, 1][which.min(honestTree$cptable[, 4])] # pruning parameter
+opTree <- prune(honestTree, opcp) # prune the tree
+rpart.plot(opTree) # plot the tree
+```
+---
+![bg center:50%](honest_causal_tree.png)
+
+<!-- ---
+## Other methods
 
 1. Single trees (S-learner, e.g. Imai and Ratkovic (25)): does not split on treatment...
 2. Two trees (T-learner, e.g. Foster et al. (24)): split on different features therefore can not compare...
@@ -178,17 +209,29 @@ $$Y_i^* = Y_i/p_i *W_i - Y_i/(1-p_i) * (1-W_i) \quad E(Y_i^*|X_i=x) = \tau(x)$$
 
 4. Other splitting criteria: 
    1) split on the outcome, 
-   2) split based on some $T$ statistics.
+   2) split based on some $T$ statistics. -->
 
 ---
 
-# Subsequent work
+## Other methods
+
+1. Transformed Outcome Trees: create a pseudo outcome $Y_i^* = Y_i\times\frac{W_i-p}{p(1-p)}$ that encodes the treatment effect, and then run a regular regression tree.
+2. Fit-Based Trees: grow a tree by looking at improvement in the outcome fit when allowing treatment effects at the leaves.
+3. Squared T-Statistic Trees: split whenever the difference in leaf means is statistically significant.
+
+---
+## Conclusion
+
+1. An "honest" data-driven approach.
+2. Bridging the gap between predictive machine learning and causal inference.
+3. Example.
+---
+## Subsequent work
 
 1. Inference.
 2. Causal Forest
 3. Generalized Forest: generalized splitting rule (the gradient of the estimating moment condition).
 ---
-
 
 
 <div align="center">
@@ -197,3 +240,5 @@ $$Y_i^* = Y_i/p_i *W_i - Y_i/(1-p_i) * (1-W_i) \quad E(Y_i^*|X_i=x) = \tau(x)$$
 
 ![bg left:40% 80%](https://matteocourthoud.github.io/post/causal_trees/featured.png)
 </div>
+
+---
