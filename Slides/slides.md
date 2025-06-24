@@ -10,10 +10,10 @@ backgroundImage: url('https://marp.app/assets/hero-background.svg')
 ![bg left:40% 80%](https://matteocourthoud.github.io/post/causal_trees/featured.png)
 
 **Presenter:** FU Zixuan  & SONG Shuo
-**Date:** 2025-07-24
+**Date:** 2025-06-24
 
 ---
-## Motivation
+## Introduction
 - Why study heterogeneous treatment effects?
 - Research question: 
   - Estimate heterogeneity by covariates or features.
@@ -21,7 +21,7 @@ backgroundImage: url('https://marp.app/assets/hero-background.svg')
 - Athey and Imbens (2016): a data-driven approach to partition the data.
 
 ---
-## Contribution:
+- Contribution:
   - Provide valid CIs w/o restrictions on the number of covariates
 or the complexity of the DGP.
   - Discover subpopulations with lower-than-average or higher-than-average treatment effects. 
@@ -39,7 +39,7 @@ or the complexity of the DGP.
 
 - Causal Trees: focuses on the heterogeneity of treatment effects. How different is subgroup $l_1$ from subgroup $l_2$? Which group is benefiting the most? 
   
-- Causal Forests: focuses on the precision. personalized treatment effect for each individual $x_i$. Can be used as input into estimation of lower dimentsioal objects, such as to estimate optimal policy.
+- Causal Forests: focuses on consistency and asymptotical normality for treatment effects. It allows for data-driven feature selection all while maintaining the benefits of classical methods (Wager and Athey, 2018)
 ---
 ##  Trees: an overview of regression trees
 
@@ -225,12 +225,7 @@ $$Y_i^* = Y_i/p_i *W_i - Y_i/(1-p_i) * (1-W_i) \quad E(Y_i^*|X_i=x) = \tau(x)$$
 1. An "honest" data-driven approach.
 2. Bridging the gap between predictive machine learning and causal inference.
 3. Example.
----
-## Subsequent work
 
-1. Inference.
-2. Causal Forest
-3. Generalized Forest: generalized splitting rule (the gradient of the estimating moment condition).
 ---
 
 
@@ -240,5 +235,3 @@ $$Y_i^* = Y_i/p_i *W_i - Y_i/(1-p_i) * (1-W_i) \quad E(Y_i^*|X_i=x) = \tau(x)$$
 
 ![bg left:40% 80%](https://matteocourthoud.github.io/post/causal_trees/featured.png)
 </div>
-
----
