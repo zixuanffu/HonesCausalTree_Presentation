@@ -1,3 +1,4 @@
 # Honest Causal Tree Presentation
 
-[slides](slides_annotated.pdf)
+[slides_annotated Zixuan](Slides/slides_annotated.pdf)
+[slides Shuo](Slides/slides.pdf)
